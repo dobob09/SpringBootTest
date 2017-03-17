@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <property name="LOG_FILE" value="logs/spring-boot.log" />
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <!-- 3rd Party Loggers -->
+    <logger name="org.springframework.web" level="ERROR" />
+    <logger name="org.springframework.boot" level="ERROR" />
+
+    <appender name="PROJECT_DAILY"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/springboottest.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/springboottest.%d{yyyy-MM-dd}.log</FileNamePattern>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="PROJECT_DAILY"/>
+        <!-- <appender-ref ref="STDOUT"/> -->
+    </root>
+</configuration>
